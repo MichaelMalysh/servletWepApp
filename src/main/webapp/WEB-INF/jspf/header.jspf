@@ -1,6 +1,4 @@
-<%--===========================================================================
-Header (top area).
-===========================================================================--%>
+<%--Нeader (top area).--%>
 
 <%@ page import="com.test.servlet.periodicals.db.enums.Role" %>
 <%@ include file="/WEB-INF/jspf/directives/page.jspf" %>
@@ -10,17 +8,12 @@ Header (top area).
     <td id="header">
 
         <c:if test="${not empty user}">
-            <%--===========================================================================
-            This is the user menu.
-            ===========================================================================--%>
 
             <div id="leftHeader">
 
                 <c:choose>
 
-                    <%--===========================================================================
-                    This way we define the ADMIN MENU.
-                    ===========================================================================--%>
+                    <%--define the ADMIN MENU.--%>
                     <c:when test="${userRole.name == 'admin' }">
                         <a href="periodicals?command=listOrders">
                             <fmt:message key="header_jspf.anchor.all_orders"/>
@@ -28,9 +21,7 @@ Header (top area).
                     </c:when>
 
 
-                    <%--===========================================================================
-                    This way we define the USER MENU.
-                    ===========================================================================--%>
+                    <%--define the USER MENU.--%>
                     <c:when test="${userRole.name == 'reader'}">
                         <a href="periodicals?command=listPublications">
                             <fmt:message key="header_jspf.anchor.publication"/>
@@ -38,35 +29,25 @@ Header (top area).
                     </c:when>
                 </c:choose>
 
-                    <%--===========================================================================
-                    This way we define the settings anchor.
-                    ===========================================================================--%>
+                    <%--define the settings anchor.--%>
                 <a href="periodicals?command=viewSettings">
                     <fmt:message key="header_jspf.anchor.settings"/>
                 </a> &nbsp;
 
             </div>
 
-            <%--===========================================================================
-            This way we define the menu located at the right of header.
-            ===========================================================================--%>
+            <%--define the menu located at the right of header.--%>
             <div id="rightHeader" >
 
-                    <%--===========================================================================
-                    Type user name if the user object is presented in the current session.
-                    ===========================================================================--%>
+                    <%--Type user name if the user object is presented in the current session.--%>
                 <c:out value="${user.firstName} ${user.lastName}"/>
 
-                    <%--===========================================================================
-                    Type user role name if the user object is presented in the current session.
-                    ===========================================================================--%>
+                    <%--Type user role name if the user object is presented in the current session.--%>
                 <c:if test="${not empty userRole}">
                     <c:out value="(${userRole.name})"/>
                 </c:if>
 
-                    <%--===========================================================================
-                    Type link to logout
-                    ===========================================================================--%>
+                    <%--link to logout--%>
                 <a href="periodicals?command=logout">
                     <fmt:message key="header_jspf.anchor.logout"/>
                 </a>

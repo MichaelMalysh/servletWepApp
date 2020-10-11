@@ -1,7 +1,6 @@
 package com.test.servlet.periodicals.db;
 
 
-import com.test.servlet.periodicals.db.dao.UserDAO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -23,10 +22,7 @@ public class DBManager {
 
 
 
-    // //////////////////////////////////////////////////////////
     // singleton
-    // //////////////////////////////////////////////////////////
-
 
     public static synchronized DBManager getInstance() {
         if (instance == null)
@@ -47,7 +43,6 @@ public class DBManager {
             Context initContext = new InitialContext();
             Context envContext  = (Context)initContext.lookup("java:/comp/env");
 
-            // ST4DB - the name of data source
             DataSource ds = (DataSource)envContext.lookup("jdbc/mysql");
             con = ds.getConnection();
         } catch (NamingException ex) {
@@ -59,10 +54,6 @@ public class DBManager {
     private DBManager() {
     }
 
-
-    // //////////////////////////////////////////////////////////
-    // DB util methods
-    // //////////////////////////////////////////////////////////
 
     /**
      * Commits and close the given connection.

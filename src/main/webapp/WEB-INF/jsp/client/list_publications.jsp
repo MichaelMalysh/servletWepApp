@@ -14,7 +14,6 @@
 
     <tr>
         <td class="content">
-            <%-- CONTENT --%>
 
             <form id="make_order" action="periodicals">
                 <input type="hidden" name="command" value="makeOrder"/>
@@ -45,7 +44,6 @@
 
             </form>
 
-            <%-- CONTENT --%>
         </td>
     </tr>
 

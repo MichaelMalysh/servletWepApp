@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--============================================================
-    Deployment Descriptor: web.xml
-=============================================================-->
 
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://java.sun.com/xml/ns/javaee"
@@ -15,9 +12,7 @@
         <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
 
-<!--============================================================
-	SERVLET
-=============================================================-->
+<!--SERVLET-->
 
     <servlet>
         <servlet-name>MainServlet</servlet-name>
@@ -34,16 +29,14 @@
         <location>/WEB-INF/jsp/error.jsp</location>
     </error-page>
 
-    <!--============================================================
-        i18n support
-    =============================================================-->
-    <!-- this way we set the resource bundle name -->
+    <!--i18n support-->
+    <!-- set the resource bundle name -->
     <context-param>
         <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
         <param-value>message</param-value>
     </context-param>
 
-    <!-- this way we set the default locale (optional) -->
+    <!-- set the default locale (optional) -->
     <!-- the (preferable) browser's locale will be used if we don't set the default locale -->
     <context-param>
         <param-name>javax.servlet.jsp.jstl.fmt.locale</param-name>
@@ -56,14 +49,14 @@
         <param-value>uk en</param-value>
     </context-param>
 
-    <!--============================================================
+    <!--
 	Security filter.
 	1) admin: admin commands
 	2) reader: client commands
 	3) commons: commands for all roles
 	4) out-of-control: commands without access control
 	Delimiter - space/tab
-=============================================================-->
+-->
         <filter>
             <filter-name>CommandAccessFilter</filter-name>
             <filter-class>com.test.servlet.periodicals.web.filter.CommandAccessFilter</filter-class>
@@ -92,9 +85,7 @@
 
 
 
-    <!--============================================================
-        Context listener
-    =============================================================-->
+    <!--Context listener-->
     <listener>
         <listener-class>com.test.servlet.periodicals.web.listener.ContextListener</listener-class>
     </listener>

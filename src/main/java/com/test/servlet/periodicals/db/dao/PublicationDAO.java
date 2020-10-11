@@ -174,7 +174,7 @@ public class PublicationDAO {
 
 
     /**
-     * Extracts a menu item from the result set row.
+     * Extracts a publications from the result set row.
      */
     private static class PublicationMapper implements EntityMapper<Publication> {
 

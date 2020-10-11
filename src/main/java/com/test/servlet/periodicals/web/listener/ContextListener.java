@@ -60,24 +60,6 @@ public class ContextListener implements ServletContextListener {
     }
 
     /**
-     * Initializes log4j framework.
-     *
-     * @param servletContext
-     */
-//    private void initLog4J(ServletContext servletContext) {
-//        log("Log4J initialization started");
-//        try {
-//            PropertyConfigurator.configure(servletContext.getRealPath(
-//                    "WEB-INF/log4j.properties"));
-//            PropertCon
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
-//
-//        log("Log4J initialization finished");
-//    }
-
-    /**
      * Initializes CommandContainer.
      *
      * @param
