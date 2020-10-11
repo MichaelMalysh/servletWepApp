@@ -1,0 +1,100 @@
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: 3px solid powderblue;
+}
+
+thead th:nth-child(1){
+    width: 30%;
+}
+
+thead th:nth-child(2){
+    width: 20%;
+}
+
+thead th:nth-child(3){
+    width: 15%;
+}
+
+thead th:nth-child(4){
+    width: 35%;
+}
+
+th, td {
+    padding: 20px;
+}
+
+thead {
+    color: moccasin;
+    text-shadow: 1px 1px 1px black;
+}
+
+input[type="text"],
+input[type="password"] {
+    border: 2px solid #000;
+    margin: 0 0 1em 0;
+    padding: 10px;
+    width: 100%;
+}
+
+input[name="firstName"],
+input[name="lastName"] {
+    border: 2px solid #000;
+    margin: 0 0 1em 0;
+    padding: 10px;
+    width: 100%;
+}
+
+input[type="submit"] {
+    border: 3px solid #333;
+    background-color: #999;
+    border-radius: 5px;
+    padding: 10px 2em;
+    font-weight: bold;
+    color: #fff;
+}
+
+input[type="submit"]:hover {
+    background-color: #333;
+}
+
+div[id="leftHeader"] {
+    float: left;
+    margin-left: 10px;
+    padding: 2px;
+}
+
+div[id="rightHeader"] {
+    float: right;
+    margin-left: 10px;
+    padding: 2px;
+}
+
+select {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100px;
+    cursor: inherit;
+    line-height: inherit;
+    outline: none;
+    display: grid;
+    grid-template-areas: "select";
+    align-items: center;
+}
+select::-ms-expand {
+    display: none;
+}
+
+select::after {
+    content: "";
+    width: 0.9em;
+    height: 0.5em;
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+    grid-area: select;
+    justify-self: end;
+}

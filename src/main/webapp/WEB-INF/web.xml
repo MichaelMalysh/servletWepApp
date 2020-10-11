@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--============================================================
+    Deployment Descriptor: web.xml
+=============================================================-->
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee web-app_4_0.xsd"
+         version="4.0">
+
+    <display-name>Periodicals</display-name>
+
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+
+<!--============================================================
+	SERVLET
+=============================================================-->
+
+    <servlet>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>com.test.servlet.periodicals.web.MainServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/periodicals/*</url-pattern>
+    </servlet-mapping>
+
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/WEB-INF/jsp/error.jsp</location>
+    </error-page>
+
+    <!--============================================================
+        i18n support
+    =============================================================-->
+    <!-- this way we set the resource bundle name -->
+    <context-param>
+        <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+        <param-value>message</param-value>
+    </context-param>
+
+    <!-- this way we set the default locale (optional) -->
+    <!-- the (preferable) browser's locale will be used if we don't set the default locale -->
+    <context-param>
+        <param-name>javax.servlet.jsp.jstl.fmt.locale</param-name>
+        <param-value>uk</param-value>
+    </context-param>
+
+    <!-- supported locales -->
+    <context-param>
+        <param-name>locales</param-name>
+        <param-value>uk en</param-value>
+    </context-param>
+
+    <!--============================================================
+	Security filter.
+	1) admin: admin commands
+	2) reader: client commands
+	3) commons: commands for all roles
+	4) out-of-control: commands without access control
+	Delimiter - space/tab
+=============================================================-->
+        <filter>
+            <filter-name>CommandAccessFilter</filter-name>
+            <filter-class>com.test.servlet.periodicals.web.filter.CommandAccessFilter</filter-class>
+            <init-param>
+                <param-name>out-of-control</param-name>
+                <param-value>email</param-value>
+            </init-param>
+            <init-param>
+                <param-name>admin</param-name>
+                <param-value>listOrders</param-value>
+            </init-param>
+            <init-param>
+                <param-name>reader</param-name>
+                <param-value>listPublications</param-value>
+            </init-param>
+            <init-param>
+                <param-name>common</param-name>
+                <param-value>logout errorCommand viewSettings updateSettings makeOrder</param-value>
+            </init-param>
+        </filter>
+
+        <filter-mapping>
+            <filter-name>CommandAccessFilter</filter-name>
+            <servlet-name>MainServlet</servlet-name>
+        </filter-mapping>
+
+
+
+    <!--============================================================
+        Context listener
+    =============================================================-->
+    <listener>
+        <listener-class>com.test.servlet.periodicals.web.listener.ContextListener</listener-class>
+    </listener>
+
+
+
+</web-app>
